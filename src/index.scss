@@ -10,8 +10,17 @@
   --dark-grayish-blue: hsl(219, 9%, 45%);
   --grayish-blue: hsl(220, 14%, 75%);
   --light-grayish-blue: hsl(223, 64%, 98%);
-  --white: hsl(0, 0%, 100%);
-  --black: hsl(0, 0%, 0%); //(with 75% opacity for lightbox background)
+  --color-white: hsl(0, 0%, 100%);
+  --color-black: hsl(0, 0%, 0%); //(with 75% opacity for lightbox background)
+
+  //Colors
+  --color-primary-500: var(--orange);
+  --color-primary-100: var(--pale-orange);
+
+  --color-neutral-700: var(--very-dark-blue);
+  --color-neutral-500: var(--dark-grayish-blue);
+  --color-neutral-200: var(--grayish-blue);
+  --color-neutral-100: var(--light-grayish-blue);
 
   //Typography
   --font-base-size: fnc.rem(16);

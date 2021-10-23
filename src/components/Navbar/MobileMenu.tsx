@@ -1,6 +1,6 @@
 import React from "react";
 
-function MobileMenu() {
+function MobileMenu(): JSX.Element {
   return (
     <div className='nav__mobile_menu'>
       <ul className='nav__mobile_links'>

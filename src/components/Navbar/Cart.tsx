@@ -1,12 +1,13 @@
 import React from "react";
+import cartImage from "../../images/image-product-1-thumbnail.jpg";
 
-function Cart() {
+function Cart(): JSX.Element {
   return (
     <div className='cart'>
       <div className='cart__header'>Cart</div>
       <hr />
       <div className='cart__item'>
-        <img src='' alt='product' className='cart__image' />
+        <img src={cartImage} alt='product' className='cart__image' />
         <div className='cart__text'>
           <div className='cart__item_name'>Fall Limited Edition Sneakers</div>
           <div className='cart__item_price'>
