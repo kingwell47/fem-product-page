@@ -12,6 +12,7 @@ function NavBar(): JSX.Element {
     switch (element) {
       case "mobile menu":
         setMobileMenuOpen(!mobileMenuOpen);
+        document.body.classList.toggle("open");
         return;
       case "cart":
         setCartOpen(!cartOpen);
@@ -23,15 +24,16 @@ function NavBar(): JSX.Element {
 
   return (
     <nav className='nav'>
-      {mobileMenuOpen && (
-        <>
-          <MobileMenu />
-          <div className='nav__overlay'></div>
-        </>
-      )}
+      <MobileMenu open={mobileMenuOpen} />
+      <div
+        className={mobileMenuOpen ? "nav__overlay open" : "nav__overlay"}></div>
       <div className='nav__left'>
         <button
-          className='nav__toggle hide-for-desktop'
+          className={
+            mobileMenuOpen
+              ? "nav__toggle hide-for-desktop open"
+              : "nav__toggle hide-for-desktop"
+          }
           title='mobile menu'
           aria-label='open-menu'
           aria-expanded={mobileMenuOpen}

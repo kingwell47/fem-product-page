@@ -17,6 +17,43 @@
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.75);
     z-index: 2;
+    animation: fade-out 350ms ease forwards;
+    visibility: hidden;
+
+    &.open {
+      visibility: visible;
+      animation: fade-in 350ms ease forwards;
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      visibility: hidden;
+      opacity: 0;
+    }
+    1% {
+      visibility: visible;
+      opacity: 0;
+    }
+    to {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-out {
+    from {
+      visibility: visible;
+      opacity: 1;
+    }
+    99% {
+      visibility: visible;
+      opacity: 0;
+    }
+    to {
+      visibility: hidden;
+      opacity: 0;
+    }
   }
 
   &__mobile_menu {
@@ -28,11 +65,17 @@
     background-color: var(--color-white);
     position: absolute;
     top: fnc.rem(0);
-    left: fnc.rem(0);
-    border: 1px solid black; // remove
+    left: -100%;
     padding-top: fnc.rem(94);
     padding-left: fnc.rem(24);
     z-index: 3;
+    transition: all 350ms ease;
+    visibility: hidden;
+
+    &.open {
+      left: fnc.rem(0);
+      visibility: visible;
+    }
   }
 
   &__mobile_links {
@@ -70,12 +113,30 @@
       background-color: var(--color-neutral-500);
       height: fnc.rem(3);
       width: fnc.rem(16);
-      transform-origin: fnc.rem(2);
+      transform-origin: fnc.rem(0);
       transition: all 350ms ease-in-out;
       z-index: 1;
 
       &:not(:last-child) {
         margin-bottom: fnc.rem(3);
+      }
+    }
+
+    &.open {
+      span {
+        border-radius: fnc.rem(3);
+
+        &:first-child {
+          transform: rotate(48deg);
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+        }
+
+        &:last-child {
+          transform: rotate(-48deg);
+        }
       }
     }
   }
@@ -130,11 +191,35 @@
 }
 
 .cart {
+  position: absolute;
+  top: fnc.rem(76);
+  left: 50%;
+  transform: translatex(-50%);
+  display: flex;
+  flex-direction: column;
+  width: 96%;
+  background-color: var(--color-white);
+  border: 1px solid red; // remove
+  border-radius: fnc.rem(10);
+  padding: fnc.rem(24) fnc.rem(25) fnc.rem(32);
+
+  hr {
+    margin: fnc.rem(24) fnc.rem(-25);
+  }
+
   &__header {
+    font-weight: 700;
   }
   &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: fnc.rem(24);
   }
   &__image {
+    width: fnc.rem(50);
+    aspect-ratio: 1;
+    border-radius: fnc.rem(5);
   }
 
   &__text {

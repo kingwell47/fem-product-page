@@ -1,8 +1,12 @@
 import React from "react";
 
-function MobileMenu(): JSX.Element {
+interface MenuProps {
+  open: boolean;
+}
+
+function MobileMenu({ open }: MenuProps): JSX.Element {
   return (
-    <div className='nav__mobile_menu'>
+    <div className={open ? "nav__mobile_menu open" : "nav__mobile_menu"}>
       <ul className='nav__mobile_links'>
         <li className='nav__mobile_link'>
           <a href='/'>Collections</a>
