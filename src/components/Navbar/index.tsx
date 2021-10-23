@@ -23,7 +23,12 @@ function NavBar(): JSX.Element {
 
   return (
     <nav className='nav'>
-      {mobileMenuOpen && <MobileMenu />}
+      {mobileMenuOpen && (
+        <>
+          <MobileMenu />
+          <div className='nav__overlay'></div>
+        </>
+      )}
       <div className='nav__left'>
         <button
           className='nav__toggle hide-for-desktop'
