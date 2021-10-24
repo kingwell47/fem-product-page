@@ -82,7 +82,7 @@ function NavBar(): JSX.Element {
           <img src={avatar} alt='profile' />
         </a>
       </div>
-      {cartOpen && <Cart />}
+      <Cart open={cartOpen} />
     </nav>
   );
 }

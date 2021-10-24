@@ -1,12 +1,16 @@
 import React from "react";
 import cartImage from "../../images/image-product-1-thumbnail.jpg";
 
-function Cart(): JSX.Element {
+interface CartProps {
+  open: boolean;
+}
+
+function Cart({ open }: CartProps): JSX.Element {
   const handleDelete = (): void => {
     console.log("item deleted");
   };
   return (
-    <div className='cart'>
+    <div className={open ? "cart open" : "cart"}>
       <div className='cart__header'>Cart</div>
       <hr />
       <div className='cart__item'>

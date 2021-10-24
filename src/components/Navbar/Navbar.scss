@@ -1,5 +1,35 @@
 @use "../../functions" as fnc;
 
+@keyframes fade-in {
+  from {
+    visibility: hidden;
+    opacity: 0;
+  }
+  1% {
+    visibility: visible;
+    opacity: 0;
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    visibility: visible;
+    opacity: 1;
+  }
+  99% {
+    visibility: visible;
+    opacity: 0;
+  }
+  to {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
@@ -23,36 +53,6 @@
     &.open {
       visibility: visible;
       animation: fade-in 350ms ease forwards;
-    }
-  }
-
-  @keyframes fade-in {
-    from {
-      visibility: hidden;
-      opacity: 0;
-    }
-    1% {
-      visibility: visible;
-      opacity: 0;
-    }
-    to {
-      visibility: visible;
-      opacity: 1;
-    }
-  }
-
-  @keyframes fade-out {
-    from {
-      visibility: visible;
-      opacity: 1;
-    }
-    99% {
-      visibility: visible;
-      opacity: 0;
-    }
-    to {
-      visibility: hidden;
-      opacity: 0;
     }
   }
 
@@ -201,6 +201,13 @@
   background-color: var(--color-white);
   border-radius: fnc.rem(10);
   padding: fnc.rem(24) fnc.rem(25) fnc.rem(32);
+  visibility: hidden;
+  animation: fade-out 350ms ease forwards;
+
+  &.open {
+    visibility: visible;
+    animation: fade-in 350ms ease forwards;
+  }
 
   hr {
     margin: fnc.rem(24) fnc.rem(-25);
@@ -224,6 +231,9 @@
   }
 
   &__text {
+    display: flex;
+    flex-direction: column;
+    gap: fnc.rem(10);
   }
 
   &__item_name {
@@ -237,7 +247,6 @@
   &__item_price {
     display: flex;
     gap: fnc.rem(5);
-    margin-top: fnc.rem(10);
     &_singular {
       color: var(--color-neutral-500);
     }
