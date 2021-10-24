@@ -170,6 +170,28 @@
     display: inline-block;
     & a {
       color: var(--color-neutral-500);
+      transition: color 350ms ease;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: fnc.rem(-45);
+        left: 0;
+        width: 100%;
+        height: fnc.rem(4);
+        background-color: var(--color-primary-500);
+        transition: opacity 350ms ease;
+        opacity: 0;
+      }
+
+      &:hover {
+        color: var(--color-black);
+
+        &::after {
+          opacity: 1;
+        }
+      }
     }
   }
 
