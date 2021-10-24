@@ -16,7 +16,9 @@ function Cart({ open }: CartProps): JSX.Element {
       <div className='cart__item'>
         <img src={cartImage} alt='product' className='cart__image' />
         <div className='cart__text'>
-          <div className='cart__item_name'>Fall Limited Edition Sneakers</div>
+          <div className='cart__item_name'>
+            Fall Limited Edition Sneakers This is a test
+          </div>
           <div className='cart__item_price'>
             <div className='cart__item_price_singular'>$125.00</div>
             <div className='cart__item_price_multiplier'> x 3 </div>

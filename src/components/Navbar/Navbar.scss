@@ -1,17 +1,21 @@
 @use "../../functions" as fnc;
 
+//Animations
 @keyframes fade-in {
   from {
     visibility: hidden;
     opacity: 0;
+    display: none;
   }
   1% {
     visibility: visible;
     opacity: 0;
+    display: flex;
   }
   to {
     visibility: visible;
     opacity: 1;
+    display: flex;
   }
 }
 
@@ -19,14 +23,17 @@
   from {
     visibility: visible;
     opacity: 1;
+    display: flex;
   }
   99% {
     visibility: visible;
     opacity: 0;
+    display: flex;
   }
   to {
     visibility: hidden;
     opacity: 0;
+    display: none;
   }
 }
 
@@ -34,10 +41,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: fnc.rem(1110);
   min-height: fnc.rem(68);
+  margin: 0 auto;
   padding-left: fnc.rem(24);
   padding-right: fnc.rem(24);
   position: relative;
+
+  @include fnc.breakpoint-up(medium) {
+    padding: 0;
+    min-height: fnc.rem(112);
+    border-bottom: 1px solid var(--color-neutral-200);
+  }
 
   &__overlay {
     position: absolute;
@@ -142,12 +157,20 @@
   }
 
   &__logo {
+    margin-right: fnc.rem(54);
   }
 
   &__links {
+    * + * {
+      margin-left: fnc.rem(32);
+    }
   }
 
   &__link {
+    display: inline-block;
+    & a {
+      color: var(--color-neutral-500);
+    }
   }
 
   &__right {
@@ -164,8 +187,17 @@
     cursor: pointer;
     position: relative;
 
-    svg path {
-      fill: var(--color-neutral-700);
+    svg {
+      path {
+        transition: all 350ms ease;
+        fill: var(--color-neutral-500);
+      }
+    }
+
+    &:hover {
+      svg path {
+        fill: var(--color-neutral-700);
+      }
     }
   }
 
@@ -184,8 +216,20 @@
 
   &__profile_pic {
     img {
-      width: fnc.rem(24);
-      height: auto;
+      display: block;
+      width: fnc.rem(26);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      transition: all 350ms ease;
+
+      @include fnc.breakpoint-up(medium) {
+        width: fnc.rem(52);
+      }
+
+      &:hover {
+        border: 2px solid var(--color-primary-500);
+      }
     }
   }
 }
@@ -193,9 +237,8 @@
 .cart {
   position: absolute;
   top: fnc.rem(76);
-  left: 50%;
-  transform: translatex(-50%);
-  display: flex;
+  right: fnc.rem(7);
+  display: none;
   flex-direction: column;
   width: 96%;
   background-color: var(--color-white);
@@ -203,8 +246,19 @@
   padding: fnc.rem(24) fnc.rem(25) fnc.rem(32);
   visibility: hidden;
   animation: fade-out 350ms ease forwards;
+  box-shadow: 0px 15px 25px 3px rgba(0, 0, 0, 0.14);
 
+  @include fnc.breakpoint-up(medium) {
+    max-width: fnc.rem(360);
+    top: fnc.rem(92);
+    right: 10%;
+  }
+
+  @include fnc.breakpoint-up(large) {
+    transform: translatex(50%);
+  }
   &.open {
+    display: flex;
     visibility: visible;
     animation: fade-in 350ms ease forwards;
   }
@@ -237,7 +291,7 @@
   }
 
   &__item_name {
-    max-width: fnc.rem(187); //not responsive
+    max-width: fnc.rem(210);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -263,6 +317,7 @@
     appearance: none;
     display: flex;
     justify-content: flex-end;
+    margin-left: fnc.rem(16);
     padding: 0;
   }
   &__checkout {
