@@ -260,7 +260,7 @@
   position: absolute;
   top: fnc.rem(76);
   right: fnc.rem(7);
-  display: none;
+  // display: none;
   flex-direction: column;
   width: 96%;
   background-color: var(--color-white);
@@ -343,6 +343,7 @@
     padding: 0;
   }
   &__checkout {
+    width: 100%;
     height: fnc.rem(56);
     background-color: var(--color-primary-500);
     border: none;
