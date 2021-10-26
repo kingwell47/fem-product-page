@@ -269,6 +269,7 @@
   visibility: hidden;
   animation: fade-out 350ms ease forwards;
   box-shadow: 0px 15px 25px 3px rgba(0, 0, 0, 0.14);
+  z-index: 4;
 
   @include fnc.breakpoint-up(medium) {
     max-width: fnc.rem(360);

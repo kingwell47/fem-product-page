@@ -6,21 +6,21 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    height: fnc.rem(300);
+    background-color: var(--color-primary-500);
+    min-height: fnc.rem(300);
     overflow: hidden;
   }
 
-  &__slides {
-    display: flex;
-    justify-content: flex-start;
-    width: 400%;
-  }
-
   &__slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: fnc.rem(300);
     opacity: 0;
-    transition: all 250ms ease;
+    transition: all 150ms ease;
 
     &.active {
+      width: 100%;
       opacity: 1;
     }
   }

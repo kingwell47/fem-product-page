@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "./components/Header";
+import Content from "./components/Content";
 import ImageSlider from "./components/ImageSlider";
 import NavBar from "./components/Navbar";
 
@@ -8,7 +8,7 @@ function App() {
     <main className='App'>
       <NavBar />
       <ImageSlider />
-      <Header />
+      <Content />
     </main>
   );
 }

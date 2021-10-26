@@ -23,28 +23,26 @@ function ImageSlider(): JSX.Element {
   return (
     <div className='slider'>
       <div className='slider__display'>
-        <div className='slider__slides'>
-          {IMAGES.map(
-            (image: string, index: number): JSX.Element => (
-              <div
-                className={
-                  index === current ? "slider__slide active" : "slider__slide"
-                }
-                key={index}>
-                {index === current && (
-                  <img
-                    src={
-                      require(`../../images/image-product-${index + 1}.jpg`)
-                        .default
-                    }
-                    alt='product'
-                    className='slider__image'
-                  />
-                )}
-              </div>
-            )
-          )}
-        </div>
+        {IMAGES.map(
+          (image: string, index: number): JSX.Element => (
+            <div
+              className={
+                index === current ? "slider__slide active" : "slider__slide"
+              }
+              key={index}>
+              {index === current && (
+                <img
+                  src={
+                    require(`../../images/image-product-${index + 1}.jpg`)
+                      .default
+                  }
+                  alt='product'
+                  className='slider__image'
+                />
+              )}
+            </div>
+          )
+        )}
       </div>
       <button className='slider__left hide-for-desktop' onClick={onPrevious}>
         <img
