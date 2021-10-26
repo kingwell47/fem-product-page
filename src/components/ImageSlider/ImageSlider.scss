@@ -4,10 +4,25 @@
   position: relative;
   &__display {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     height: fnc.rem(300);
     overflow: hidden;
+  }
+
+  &__slides {
+    display: flex;
+    justify-content: flex-start;
+    width: 400%;
+  }
+
+  &__slide {
+    opacity: 0;
+    transition: all 250ms ease;
+
+    &.active {
+      opacity: 1;
+    }
   }
 
   &__image {
@@ -26,20 +41,22 @@
     border: none;
     border-radius: 50%;
     padding: 0;
+
+    img {
+      width: fnc.rem(9);
+      height: fnc.rem(14);
+    }
   }
 
   &__left {
     position: absolute;
     left: 5%;
-    top: 50%;
-    svg {
-      transform: rotate(180deg);
-    }
+    top: 40%;
   }
 
   &__right {
     position: absolute;
     right: 5%;
-    top: 50%;
+    top: 40%;
   }
 }
