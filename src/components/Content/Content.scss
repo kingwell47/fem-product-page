@@ -1,2 +1,69 @@
+@use "../../functions" as fnc;
+
 .content {
+  padding: fnc.rem(22) fnc.rem(24);
+  &__subtitle {
+    margin-bottom: fnc.rem(14);
+    text-transform: uppercase;
+    font-size: fnc.rem(12);
+    color: var(--color-primary-500);
+    letter-spacing: fnc.rem(2);
+  }
+  &__title {
+    font-size: fnc.rem(28);
+    color: var(--color-neutral-700);
+    line-height: 1.1;
+    margin-bottom: fnc.rem(20);
+  }
+  &__text {
+    color: var(--color-neutral-500);
+    font-size: fnc.rem(15);
+    line-height: 1.7;
+    margin-bottom: fnc.rem(24);
+  }
+
+  &__price_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: fnc.rem(30);
+  }
+  &__price_left {
+    display: flex;
+    align-items: center;
+    gap: fnc.rem(16);
+  }
+  &__price {
+    font-size: fnc.rem(32);
+    font-weight: 700;
+    color: var(--color-neutral-700);
+  }
+  &__discount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-primary-100);
+    font-weight: 700;
+    color: var(--color-primary-500);
+    padding: fnc.rem(4) fnc.rem(7);
+    border-radius: fnc.rem(5);
+  }
+  &__original_price {
+    text-decoration: line-through;
+    font-weight: 700;
+    color: var(--color-neutral-200);
+  }
+
+  //Add to Cart
+  &__add_to_cart {
+  }
+  &__amount_wrapper {
+  }
+  &__amount_button {
+  }
+  &__amount {
+  }
+  &__cart_button {
+  }
 }

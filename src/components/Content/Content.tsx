@@ -12,9 +12,13 @@ function Header() {
         Featuring a durable rubber outer sole, they’ll withstand everything the
         weather can offer.
       </p>
-      <div className='content__price'>$125.00</div>
-      <div className='content__discount'>50%</div>
-      <div className='content__original_price'>$250.00</div>
+      <div className='content__price_wrapper'>
+        <div className='content__price_left'>
+          <div className='content__price'>$125.00</div>
+          <div className='content__discount'>50%</div>
+        </div>
+        <div className='content__original_price'>$250.00</div>
+      </div>
       <AddToCart />
     </section>
   );
