@@ -49,9 +49,12 @@
   position: relative;
 
   @include fnc.breakpoint-up(medium) {
-    padding: 0;
     min-height: fnc.rem(112);
     border-bottom: 1px solid var(--color-neutral-200);
+  }
+
+  @include fnc.breakpoint-up(large) {
+    padding: 0;
   }
 
   &__overlay {

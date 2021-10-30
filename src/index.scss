@@ -116,6 +116,7 @@ p {
     flex-direction: row;
     justify-content: space-around;
     margin-top: fnc.rem(90);
+    gap: fnc.rem(16);
   }
 }
 

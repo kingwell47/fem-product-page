@@ -33,6 +33,7 @@ function NavBar(): JSX.Element {
         }></div>
       <div className='nav__left'>
         <button
+          type='button'
           className={
             mobileMenuOpen
               ? "nav__toggle hide-for-desktop open"

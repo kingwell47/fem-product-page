@@ -68,11 +68,11 @@ function ImageSlider(): JSX.Element {
           (imageName: string, index: number): JSX.Element => (
             <button
               type='button'
+              key={index}
               className={
                 index === current ? "slider__thumb active" : "slider__thumb"
               }>
               <img
-                key={index}
                 src={require(`../../images/${imageName}`).default}
                 alt='thumbnail'
                 onClick={(): void => handleClick(index)}
