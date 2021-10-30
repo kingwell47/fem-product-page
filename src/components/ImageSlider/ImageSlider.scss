@@ -1,6 +1,7 @@
 @use "../../functions" as fnc;
 
 .slider {
+  width: min(100%, fnc.rem(445));
   @include fnc.breakpoint-up(medium) {
     display: flex;
     flex-direction: column;
@@ -20,6 +21,10 @@
     @include fnc.breakpoint-up(medium) {
       min-height: fnc.rem(445);
       border-radius: fnc.rem(15);
+
+      img {
+        border-radius: fnc.rem(15);
+      }
     }
   }
 
@@ -33,6 +38,12 @@
 
     &.active {
       opacity: 1;
+
+      // @include fnc.breakpoint-up(medium) {
+      //   img {
+      //     border-radius: fnc.rem(15);
+      //   }
+      // }
     }
   }
 
@@ -83,7 +94,7 @@
     width: min(100%, fnc.rem(445));
     margin-top: fnc.rem(30);
 
-    @include fnc.breakpoint-down(medium) {
+    @include fnc.breakpoint-down(small) {
       display: none;
     }
   }
@@ -95,7 +106,20 @@
     width: fnc.rem(92);
     aspect-ratio: 1;
     border-radius: fnc.rem(10);
+    background-color: transparent;
     overflow: hidden;
+    padding: 0;
+    border: none;
+
+    img {
+      transition: opacity 350ms ease;
+    }
+
+    &:hover {
+      img {
+        opacity: 25%;
+      }
+    }
 
     img {
       display: block;

@@ -1,23 +1,28 @@
 @use "../../functions" as fnc;
 
 .content {
+  width: min(100%, fnc.rem(445));
   padding: fnc.rem(22) fnc.rem(24);
+
+  @include fnc.breakpoint-up(medium) {
+    padding: 0;
+  }
   &__subtitle {
     margin-bottom: fnc.rem(14);
     text-transform: uppercase;
-    font-size: fnc.rem(12);
+    font-size: clamp(fnc.rem(12), 1.5vw, fnc.rem(14));
     color: var(--color-primary-500);
     letter-spacing: fnc.rem(2);
   }
   &__title {
-    font-size: fnc.rem(28);
+    font-size: clamp(fnc.rem(28), 4vw, fnc.rem(48));
     color: var(--color-neutral-700);
     line-height: 1.1;
     margin-bottom: fnc.rem(20);
   }
   &__text {
     color: var(--color-neutral-500);
-    font-size: fnc.rem(15);
+    font-size: clamp(fnc.rem(15), 1.5vw, fnc.rem(16));
     line-height: 1.7;
     margin-bottom: fnc.rem(24);
   }
@@ -28,6 +33,13 @@
     align-items: center;
     width: 100%;
     margin-bottom: fnc.rem(20);
+
+    @include fnc.breakpoint-up(medium) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      margin-bottom: fnc.rem(40);
+    }
   }
   &__price_left {
     display: flex;
@@ -60,15 +72,25 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
     gap: fnc.rem(16);
+
+    @include fnc.breakpoint-up(medium) {
+      flex-direction: row;
+    }
   }
   &__amount_wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+
     background-color: var(--color-neutral-100);
-    padding: fnc.rem(20) fnc.rem(24);
     border-radius: fnc.rem(10);
+
+    @include fnc.breakpoint-up(medium) {
+      min-width: fnc.rem(156);
+    }
   }
   &__amount_button {
     display: flex;
@@ -76,7 +98,8 @@
     align-items: center;
     background-color: transparent;
     border: none;
-    padding: 0;
+    border-radius: 50%;
+    padding: fnc.rem(20) fnc.rem(24);
   }
   &__amount {
     font-weight: 700;
@@ -86,6 +109,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+
     background-color: var(--color-primary-500);
     border: none;
     border-radius: fnc.rem(10);
@@ -95,6 +120,10 @@
     padding: fnc.rem(18) 0;
     box-shadow: fnc.rem(0) fnc.rem(12) fnc.rem(16) fnc.rem(11)
       rgba(252, 130, 41, 0.18);
+
+    @include fnc.breakpoint-up(medium) {
+      min-width: fnc.rem(272);
+    }
 
     &_icon {
       width: fnc.rem(18);

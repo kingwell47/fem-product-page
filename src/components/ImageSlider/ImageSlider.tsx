@@ -50,13 +50,13 @@ function ImageSlider(): JSX.Element {
             </div>
           )
         )}
-        <button className='slider__left' onClick={onPrevious}>
+        <button type='button' className='slider__left' onClick={onPrevious}>
           <img
             src={require("../../images/icon-previous.svg").default}
             alt='next'
           />
         </button>
-        <button className='slider__right' onClick={onNext}>
+        <button type='button' className='slider__right' onClick={onNext}>
           <img
             src={require("../../images/icon-next.svg").default}
             alt='previous'
@@ -66,7 +66,8 @@ function ImageSlider(): JSX.Element {
       <div className='slider__thumbs hide-for-mobile'>
         {THUMBS.map(
           (imageName: string, index: number): JSX.Element => (
-            <div
+            <button
+              type='button'
               className={
                 index === current ? "slider__thumb active" : "slider__thumb"
               }>
@@ -76,7 +77,7 @@ function ImageSlider(): JSX.Element {
                 alt='thumbnail'
                 onClick={(): void => handleClick(index)}
               />
-            </div>
+            </button>
           )
         )}
       </div>

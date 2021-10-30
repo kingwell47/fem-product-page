@@ -46,7 +46,7 @@ function NavBar(): JSX.Element {
           <span></span>
           <span></span>
         </button>
-        <a href='/'>
+        <a href='/' title='logo'>
           <svg
             width='138'
             height='20'
