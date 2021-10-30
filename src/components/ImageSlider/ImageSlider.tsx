@@ -50,31 +50,33 @@ function ImageSlider(): JSX.Element {
             </div>
           )
         )}
-        <button className='slider__left hide-for-desktop' onClick={onPrevious}>
+        <button className='slider__left' onClick={onPrevious}>
           <img
             src={require("../../images/icon-previous.svg").default}
             alt='next'
           />
         </button>
-        <button className='slider__right hide-for-desktop' onClick={onNext}>
+        <button className='slider__right' onClick={onNext}>
           <img
             src={require("../../images/icon-next.svg").default}
             alt='previous'
           />
         </button>
       </div>
-      <div className='slider__previews hide-for-mobile'>
+      <div className='slider__thumbs hide-for-mobile'>
         {THUMBS.map(
           (imageName: string, index: number): JSX.Element => (
-            <img
-              key={index}
-              src={require(`../../images/${imageName}`).default}
-              alt='preview'
+            <div
               className={
-                index === current ? "slider__preview active" : "slider__preview"
-              }
-              onClick={(): void => handleClick(index)}
-            />
+                index === current ? "slider__thumb active" : "slider__thumb"
+              }>
+              <img
+                key={index}
+                src={require(`../../images/${imageName}`).default}
+                alt='thumbnail'
+                onClick={(): void => handleClick(index)}
+              />
+            </div>
           )
         )}
       </div>

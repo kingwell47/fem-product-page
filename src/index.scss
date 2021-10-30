@@ -99,4 +99,21 @@ p {
 
 .App {
   max-width: fnc.rem(1440);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: min(100%, fnc.rem(1110));
+
+  @include fnc.breakpoint-up(medium) {
+    flex-direction: row;
+    margin-top: fnc.rem(90);
+  }
 }

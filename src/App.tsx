@@ -1,16 +1,17 @@
 import React from "react";
 import Content from "./components/Content";
-import DesktopImageView from "./components/DesktopImageView";
 import ImageSlider from "./components/ImageSlider";
 import NavBar from "./components/Navbar";
 
 function App() {
   return (
-    <main className='App'>
+    <div className='App'>
       <NavBar />
-      <ImageSlider />
-      <Content />
-    </main>
+      <main className='item'>
+        <ImageSlider />
+        <Content />
+      </main>
+    </div>
   );
 }
 

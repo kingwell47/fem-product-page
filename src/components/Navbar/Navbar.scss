@@ -41,7 +41,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: fnc.rem(1110);
+  width: min(100%, fnc.rem(1110));
   min-height: fnc.rem(68);
   margin: 0 auto;
   padding-left: fnc.rem(24);

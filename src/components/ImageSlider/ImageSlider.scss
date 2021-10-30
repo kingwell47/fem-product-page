@@ -1,14 +1,26 @@
 @use "../../functions" as fnc;
 
 .slider {
-  position: relative;
+  @include fnc.breakpoint-up(medium) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   &__display {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background-color: var(--color-primary-500);
+    width: min(100%, fnc.rem(445));
     min-height: fnc.rem(300);
     overflow: hidden;
+    position: relative;
+
+    @include fnc.breakpoint-up(medium) {
+      min-height: fnc.rem(445);
+      border-radius: fnc.rem(15);
+    }
   }
 
   &__slide {
@@ -20,7 +32,6 @@
     transition: all 150ms ease;
 
     &.active {
-      width: 100%;
       opacity: 1;
     }
   }
@@ -31,7 +42,8 @@
     object-fit: cover;
   }
 
-  button {
+  &__left,
+  &__right {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,6 +58,10 @@
       width: fnc.rem(9);
       height: fnc.rem(14);
     }
+
+    @include fnc.breakpoint-up(medium) {
+      visibility: hidden;
+    }
   }
 
   &__left {
@@ -58,5 +74,41 @@
     position: absolute;
     right: 5%;
     top: 40%;
+  }
+
+  &__thumbs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: min(100%, fnc.rem(445));
+    margin-top: fnc.rem(30);
+
+    @include fnc.breakpoint-down(medium) {
+      display: none;
+    }
+  }
+
+  &__thumb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fnc.rem(92);
+    aspect-ratio: 1;
+    border-radius: fnc.rem(10);
+    overflow: hidden;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    &.active {
+      outline: fnc.rem(2) solid var(--color-primary-500);
+
+      img {
+        opacity: 25%;
+      }
+    }
   }
 }
