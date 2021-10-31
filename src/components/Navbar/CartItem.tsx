@@ -1,22 +1,35 @@
-import React, { useContext } from "react";
-import { CartContext } from "../../context/CartContext";
-import cartImage from "../../images/image-product-1-thumbnail.jpg";
+import { ItemContent } from "../../context/CartContext";
 
-function CartItem() {
+type Props = {
+  item: ItemContent;
+  handleRemove: (name: string) => void;
+};
+
+function CartItem({ item, handleRemove }: Props): JSX.Element {
+  const { itemName, amount, price, image } = item;
+
   return (
     <div className='cart__item'>
-      <img src={cartImage} alt='product' className='cart__image' />
+      <img
+        src={require(`../../images/${image}`).default}
+        alt='product'
+        className='cart__image'
+      />
       <div className='cart__text'>
-        <div className='cart__item_name'>
-          Fall Limited Edition Sneakers This is a test
-        </div>
+        <div className='cart__item_name'>{itemName}</div>
         <div className='cart__item_price'>
-          <div className='cart__item_price_singular'>$125.00</div>
-          <div className='cart__item_price_multiplier'> x 3 </div>
-          <div className='cart__item_price_total'>$375.00</div>
+          <div className='cart__item_price_singular'>${price.toFixed(2)}</div>
+          <div className='cart__item_price_multiplier'> x {amount} </div>
+          <div className='cart__item_price_total'>
+            ${(price * amount).toFixed(2)}
+          </div>
         </div>
       </div>
-      <button type='button' className='cart__item_delete' title='delete'>
+      <button
+        type='button'
+        className='cart__item_delete'
+        title='delete'
+        onClick={() => handleRemove(itemName)}>
         <svg
           width='14'
           height='16'

@@ -11,7 +11,8 @@ interface Props {
 function Content({ itemData }: Props): JSX.Element {
   const [amount, setAmount] = useState<number>(0);
   const { cartItems, setCartItems } = useContext(CartContext);
-  const { brand, itemName, itemDesc, price, discount, ogPrice } = itemData;
+  const { brand, itemName, itemDesc, price, discount, ogPrice, image } =
+    itemData;
 
   const reduceAmount = (): void => {
     if (amount <= 0) return;
@@ -24,6 +25,11 @@ function Content({ itemData }: Props): JSX.Element {
 
   const handleAddItem = (): void => {
     if (!amount) return;
+    //TODO: check if item already in cart, update amount if needed
+    let inCart: ItemContent[] | null = cartItems.filter(
+      (item): boolean => item.itemName === itemName
+    );
+    if (inCart.length >= 1) return;
 
     const newItem: ItemContent = {
       itemName,
@@ -31,9 +37,9 @@ function Content({ itemData }: Props): JSX.Element {
       price,
       discount,
       ogPrice,
+      image,
     };
     setCartItems((prev: ItemContent[]) => [...prev, newItem]);
-    console.log(newItem);
   };
 
   return (

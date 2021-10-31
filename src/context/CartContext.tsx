@@ -6,6 +6,7 @@ export type ItemContent = {
   price: number;
   discount: number;
   ogPrice: number;
+  image: string;
 };
 
 type ProviderContext = {

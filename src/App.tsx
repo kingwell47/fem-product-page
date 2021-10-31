@@ -26,6 +26,7 @@ export type ItemInterface = {
   price: number;
   discount: number;
   ogPrice: number;
+  image: string;
 };
 
 const ITEMDATA: ItemInterface = {
@@ -37,6 +38,7 @@ const ITEMDATA: ItemInterface = {
   price: 125,
   discount: 0.5,
   ogPrice: 125 / 0.5,
+  image: "image-product-1-thumbnail.jpg",
 };
 
 function App() {
