@@ -110,7 +110,6 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-
     background-color: var(--color-primary-500);
     border: none;
     border-radius: fnc.rem(10);
@@ -120,6 +119,11 @@
     padding: fnc.rem(18) 0;
     box-shadow: fnc.rem(0) fnc.rem(12) fnc.rem(16) fnc.rem(11)
       rgba(252, 130, 41, 0.18);
+    transition: opacity 350ms ease;
+
+    &:hover {
+      opacity: 0.75;
+    }
 
     @include fnc.breakpoint-up(medium) {
       min-width: fnc.rem(272);
