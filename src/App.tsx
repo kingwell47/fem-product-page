@@ -5,8 +5,27 @@ import LightBox from "./components/LightBox";
 import NavBar from "./components/Navbar";
 import { CartProvider } from "./context/CartContext";
 
+const IMAGES: string[] = [
+  "image-product-1.jpg",
+  "image-product-2.jpg",
+  "image-product-3.jpg",
+  "image-product-4.jpg",
+];
+
+const THUMBS: string[] = [
+  "image-product-1-thumbnail.jpg",
+  "image-product-2-thumbnail.jpg",
+  "image-product-3-thumbnail.jpg",
+  "image-product-4-thumbnail.jpg",
+];
+
 function App() {
   const [overlay, setOverlay] = useState<boolean>(false);
+  const [currentImage, setCurrentImage] = useState<number>(0);
+
+  const changeImage = (index: number): void => {
+    setCurrentImage(index);
+  };
 
   const openOverlay = (): void => {
     setOverlay(true);
@@ -22,10 +41,26 @@ function App() {
       <div className='App'>
         <NavBar />
         <main className='item'>
-          <ImageSlider openOverlay={openOverlay} />
+          <ImageSlider
+            currentImage={currentImage}
+            productImages={IMAGES}
+            productThumbs={THUMBS}
+            openOverlay={openOverlay}
+            changeImage={changeImage}
+          />
           <Content />
         </main>
-        {overlay && <LightBox closeOverlay={closeOverlay} />}
+        {overlay && (
+          <LightBox closeOverlay={closeOverlay}>
+            <ImageSlider
+              currentImage={currentImage}
+              productImages={IMAGES}
+              productThumbs={THUMBS}
+              openOverlay={openOverlay}
+              changeImage={changeImage}
+            />
+          </LightBox>
+        )}
       </div>
     </CartProvider>
   );

@@ -34,6 +34,13 @@
     svg {
       path {
         fill: var(--color-white);
+        transition: fill 350ms ease;
+      }
+    }
+
+    &:hover {
+      svg path {
+        fill: var(--color-primary-500);
       }
     }
   }
@@ -53,13 +60,15 @@
       visibility: visible;
       width: fnc.rem(56);
 
-      img {
-        width: fnc.rem(11);
-        height: fnc.rem(18);
+      svg path {
+        transition: stroke 350ms ease;
       }
 
       &:hover {
-        img {
+        svg {
+          path {
+            stroke: var(--color-primary-500);
+          }
         }
       }
     }

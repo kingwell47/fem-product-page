@@ -1,12 +1,12 @@
 import React from "react";
-import ImageSlider from "../ImageSlider";
 import "./LightBox.scss";
 
 interface Props {
   closeOverlay: () => void;
+  children: JSX.Element;
 }
 
-function LightBox({ closeOverlay }: Props): JSX.Element {
+function LightBox({ closeOverlay, children }: Props): JSX.Element {
   return (
     <div className='lightbox'>
       <div className='lightbox__top'>
@@ -27,7 +27,7 @@ function LightBox({ closeOverlay }: Props): JSX.Element {
           </svg>
         </button>
       </div>
-      <ImageSlider />
+      {children}
     </div>
   );
 }

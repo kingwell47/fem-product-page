@@ -1,43 +1,42 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./ImageSlider.scss";
 
-const IMAGES: string[] = [
-  "image-product-1.jpg",
-  "image-product-2.jpg",
-  "image-product-3.jpg",
-  "image-product-4.jpg",
-];
-
-const THUMBS: string[] = [
-  "image-product-1-thumbnail.jpg",
-  "image-product-2-thumbnail.jpg",
-  "image-product-3-thumbnail.jpg",
-  "image-product-4-thumbnail.jpg",
-];
-
 interface Props {
+  currentImage: number;
+  productImages: string[];
+  productThumbs: string[];
   openOverlay?: () => void;
+  changeImage: (index: number) => void;
 }
 
-function ImageSlider({ openOverlay }: Props): JSX.Element {
-  const [current, setCurrent] = useState<number>(0);
+function ImageSlider({
+  currentImage,
+  productImages,
+  productThumbs,
+  openOverlay,
+  changeImage,
+}: Props): JSX.Element {
+  const [current, setCurrent] = useState<number>(currentImage);
 
   const onNext = (): void => {
-    setCurrent(current === IMAGES.length - 1 ? 0 : current + 1);
+    setCurrent(current === productImages.length - 1 ? 0 : current + 1);
+    changeImage(current);
   };
 
   const onPrevious = (): void => {
-    setCurrent(current === 0 ? IMAGES.length - 1 : current - 1);
+    setCurrent(current === 0 ? productImages.length - 1 : current - 1);
+    changeImage(current);
   };
 
   const handleClick = (newCurrent: number): void => {
     setCurrent(newCurrent);
+    changeImage(newCurrent);
   };
 
   return (
     <div className='slider'>
       <div className='slider__display' onClick={openOverlay}>
-        {IMAGES.map(
+        {productImages.map(
           (image: string, index: number): JSX.Element => (
             <div
               className={
@@ -54,21 +53,39 @@ function ImageSlider({ openOverlay }: Props): JSX.Element {
             </div>
           )
         )}
-        <button type='button' className='slider__left' onClick={onPrevious}>
-          <img
-            src={require("../../images/icon-previous.svg").default}
-            alt='next'
-          />
+        <button
+          title='previous'
+          type='button'
+          className='slider__left'
+          onClick={onPrevious}>
+          <svg width='12' height='18' xmlns='http://www.w3.org/2000/svg'>
+            <path
+              d='M11 1 3 9l8 8'
+              stroke='#1D2026'
+              stroke-width='3'
+              fill='none'
+              fillRule='evenodd'
+            />
+          </svg>
         </button>
-        <button type='button' className='slider__right' onClick={onNext}>
-          <img
-            src={require("../../images/icon-next.svg").default}
-            alt='previous'
-          />
+        <button
+          title='next'
+          type='button'
+          className='slider__right'
+          onClick={onNext}>
+          <svg width='13' height='18' xmlns='http://www.w3.org/2000/svg'>
+            <path
+              d='m2 1 8 8-8 8'
+              stroke='#1D2026'
+              stroke-width='3'
+              fill='none'
+              fillRule='evenodd'
+            />
+          </svg>
         </button>
       </div>
       <div className='slider__thumbs hide-for-mobile'>
-        {THUMBS.map(
+        {productThumbs.map(
           (imageName: string, index: number): JSX.Element => (
             <button
               type='button'
