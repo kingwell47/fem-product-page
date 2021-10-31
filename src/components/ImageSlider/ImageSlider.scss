@@ -13,10 +13,12 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: min(100%, fnc.rem(445));
+    width: 100%;
+    background-color: var(--color-white);
     min-height: fnc.rem(300);
     overflow: hidden;
     position: relative;
+    cursor: pointer;
 
     @include fnc.breakpoint-up(medium) {
       min-height: fnc.rem(445);
@@ -106,7 +108,7 @@
     width: fnc.rem(92);
     aspect-ratio: 1;
     border-radius: fnc.rem(10);
-    background-color: transparent;
+    background-color: var(--color-white);
     overflow: hidden;
     padding: 0;
     border: none;

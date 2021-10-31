@@ -1,0 +1,81 @@
+@use "../../functions" as fnc;
+
+.lightbox {
+  width: max(100vw, 100%);
+  height: max(100vw, 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.75);
+  padding-top: fnc.rem(80);
+
+  @include fnc.breakpoint-down(small) {
+    display: none;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: flex-end;
+    min-width: fnc.rem(550);
+  }
+
+  &__close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    width: fnc.rem(32);
+    aspect-ratio: 1;
+    border: none;
+    padding: fnc.rem(5);
+    svg {
+      path {
+        fill: var(--color-white);
+      }
+    }
+  }
+
+  .slider {
+    width: min(100%, fnc.rem(550));
+    margin-top: fnc.rem(22);
+
+    &__display {
+      min-height: fnc.rem(550);
+      overflow: visible;
+      cursor: auto;
+    }
+
+    &__left,
+    &__right {
+      visibility: visible;
+      width: fnc.rem(56);
+
+      img {
+        width: fnc.rem(11);
+        height: fnc.rem(18);
+      }
+
+      &:hover {
+        img {
+        }
+      }
+    }
+
+    &__image {
+      object-fit: contain;
+    }
+
+    &__left {
+      left: 0;
+      transform: translateX(-50%);
+    }
+
+    &__right {
+      right: 0;
+      transform: translateX(50%);
+    }
+  }
+}

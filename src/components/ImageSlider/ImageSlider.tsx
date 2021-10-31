@@ -15,7 +15,11 @@ const THUMBS: string[] = [
   "image-product-4-thumbnail.jpg",
 ];
 
-function ImageSlider(): JSX.Element {
+interface Props {
+  openOverlay?: () => void;
+}
+
+function ImageSlider({ openOverlay }: Props): JSX.Element {
   const [current, setCurrent] = useState<number>(0);
 
   const onNext = (): void => {
@@ -32,7 +36,7 @@ function ImageSlider(): JSX.Element {
 
   return (
     <div className='slider'>
-      <div className='slider__display'>
+      <div className='slider__display' onClick={openOverlay}>
         {IMAGES.map(
           (image: string, index: number): JSX.Element => (
             <div
