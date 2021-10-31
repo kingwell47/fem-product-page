@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 import Cart from "./Cart";
 import MobileMenu from "./MobileMenu";
 import "./Navbar.scss";
@@ -7,6 +8,8 @@ import avatar from "../../images/image-avatar.png";
 function NavBar(): JSX.Element {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [cartOpen, setCartOpen] = useState<boolean>(false);
+
+  const { cartItems } = useContext(CartContext);
 
   const handleClick = (element: string): void => {
     switch (element) {
@@ -87,7 +90,9 @@ function NavBar(): JSX.Element {
               fillRule='nonzero'
             />
           </svg>
-          <span className='nav__cart_count'>3</span>
+          {cartItems.length > 0 && (
+            <span className='nav__cart_count'>{cartItems[0].amount}</span>
+          )}
         </button>
         <a href='/' className='nav__profile_pic'>
           <img src={avatar} alt='profile' />

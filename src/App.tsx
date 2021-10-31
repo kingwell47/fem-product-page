@@ -19,6 +19,26 @@ const THUMBS: string[] = [
   "image-product-4-thumbnail.jpg",
 ];
 
+export type ItemInterface = {
+  brand: string;
+  itemName: string;
+  itemDesc: string;
+  price: number;
+  discount: number;
+  ogPrice: number;
+};
+
+const ITEMDATA: ItemInterface = {
+  brand: "Sneaker Company",
+  itemName: "Fall Limited Edition Sneakers",
+  itemDesc: `These low-profile sneakers are your perfect casual wear companion.
+  Featuring a durable rubber outer sole, they’ll withstand everything the
+  weather can offer.`,
+  price: 125,
+  discount: 0.5,
+  ogPrice: 125 / 0.5,
+};
+
 function App() {
   const [overlay, setOverlay] = useState<boolean>(false);
   const [currentImage, setCurrentImage] = useState<number>(0);
@@ -48,7 +68,7 @@ function App() {
             openOverlay={openOverlay}
             changeImage={changeImage}
           />
-          <Content />
+          <Content itemData={ITEMDATA} />
         </main>
         {overlay && (
           <LightBox closeOverlay={closeOverlay}>

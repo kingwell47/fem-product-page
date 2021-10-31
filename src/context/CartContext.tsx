@@ -1,9 +1,11 @@
 import { useState, createContext } from "react";
 
 export type ItemContent = {
-  name: string;
+  itemName: string;
   amount: number;
   price: number;
+  discount: number;
+  ogPrice: number;
 };
 
 type ProviderContext = {
@@ -21,13 +23,7 @@ type Props = {
 };
 
 export const CartProvider = ({ children }: Props): JSX.Element => {
-  const [cartItems, setCartItems] = useState<ItemContent[]>([
-    {
-      name: "Fall Limited Edition Sneakers",
-      amount: 3,
-      price: 125.0,
-    },
-  ]);
+  const [cartItems, setCartItems] = useState<ItemContent[]>([]);
   return (
     <CartContext.Provider value={{ cartItems, setCartItems }}>
       {children}

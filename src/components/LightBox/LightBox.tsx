@@ -1,10 +1,10 @@
 import React from "react";
 import "./LightBox.scss";
 
-interface Props {
+type Props = {
   closeOverlay: () => void;
   children: JSX.Element;
-}
+};
 
 function LightBox({ closeOverlay, children }: Props): JSX.Element {
   return (
