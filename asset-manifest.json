@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/fem-product-page/static/css/main.1d5a55e9.chunk.css",
+    "main.js": "/fem-product-page/static/js/main.faa44524.chunk.js",
+    "main.js.map": "/fem-product-page/static/js/main.faa44524.chunk.js.map",
+    "runtime-main.js": "/fem-product-page/static/js/runtime-main.38789e11.js",
+    "runtime-main.js.map": "/fem-product-page/static/js/runtime-main.38789e11.js.map",
+    "static/js/2.1d50eceb.chunk.js": "/fem-product-page/static/js/2.1d50eceb.chunk.js",
+    "static/js/2.1d50eceb.chunk.js.map": "/fem-product-page/static/js/2.1d50eceb.chunk.js.map",
+    "index.html": "/fem-product-page/index.html",
+    "static/css/main.1d5a55e9.chunk.css.map": "/fem-product-page/static/css/main.1d5a55e9.chunk.css.map",
+    "static/js/2.1d50eceb.chunk.js.LICENSE.txt": "/fem-product-page/static/js/2.1d50eceb.chunk.js.LICENSE.txt",
+    "static/media/icon-cart-light.svg": "/fem-product-page/static/media/icon-cart-light.31192393.svg",
+    "static/media/icon-cart.svg": "/fem-product-page/static/media/icon-cart.539ec608.svg",
+    "static/media/icon-close.svg": "/fem-product-page/static/media/icon-close.c3904486.svg",
+    "static/media/icon-delete.svg": "/fem-product-page/static/media/icon-delete.1fd1f1f7.svg",
+    "static/media/icon-menu.svg": "/fem-product-page/static/media/icon-menu.c6107d03.svg",
+    "static/media/icon-minus.svg": "/fem-product-page/static/media/icon-minus.f5073aa8.svg",
+    "static/media/icon-next.svg": "/fem-product-page/static/media/icon-next.9621183a.svg",
+    "static/media/icon-plus.svg": "/fem-product-page/static/media/icon-plus.9845a564.svg",
+    "static/media/icon-previous.svg": "/fem-product-page/static/media/icon-previous.80616402.svg",
+    "static/media/image-product-1.jpg": "/fem-product-page/static/media/image-product-1.520cc50b.jpg",
+    "static/media/image-product-2.jpg": "/fem-product-page/static/media/image-product-2.c8bb0aac.jpg",
+    "static/media/image-product-3.jpg": "/fem-product-page/static/media/image-product-3.af5c71ba.jpg",
+    "static/media/image-product-4.jpg": "/fem-product-page/static/media/image-product-4.9962862e.jpg",
+    "static/media/logo.svg": "/fem-product-page/static/media/logo.4fe9c1e8.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.38789e11.js",
+    "static/js/2.1d50eceb.chunk.js",
+    "static/css/main.1d5a55e9.chunk.css",
+    "static/js/main.faa44524.chunk.js"
+  ]
+}
