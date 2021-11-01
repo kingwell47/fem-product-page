@@ -1,13 +1,18 @@
-import React, { useContext } from "react";
+import { useContext, useRef } from "react";
 import { CartContext } from "../../context/CartContext";
+import useOnClickOutside from "../../hooks/useOnClickOutside";
 import CartItem from "./CartItem";
 
 interface CartProps {
+  outsideClose: (e: MouseEvent | TouchEvent) => void;
   open: boolean;
 }
 
-function Cart({ open }: CartProps): JSX.Element {
+function Cart({ outsideClose, open }: CartProps): JSX.Element {
   const { cartItems, setCartItems } = useContext(CartContext);
+  const cartToggleRef = useRef<HTMLDivElement>(null);
+
+  useOnClickOutside(cartToggleRef, outsideClose);
 
   const handleRemoveItem = (itemName: string): void => {
     const newItems = cartItems.filter((item) => item.itemName !== itemName);
@@ -15,7 +20,7 @@ function Cart({ open }: CartProps): JSX.Element {
   };
 
   return (
-    <div className={open ? "cart open" : "cart"}>
+    <div ref={cartToggleRef} className={open ? "cart open" : "cart"}>
       <div className='cart__header'>Cart</div>
       <hr />
       <div className='cart__bottom'>

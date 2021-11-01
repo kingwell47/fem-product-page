@@ -90,6 +90,10 @@
     transition: all 350ms ease;
     visibility: hidden;
 
+    @include fnc.breakpoint-up(medium) {
+      display: none;
+    }
+
     &.open {
       left: fnc.rem(0);
       visibility: visible;

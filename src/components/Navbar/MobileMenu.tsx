@@ -1,12 +1,20 @@
-import React from "react";
+import { useRef } from "react";
+import useOnClickOutside from "../../hooks/useOnClickOutside";
 
 interface MenuProps {
+  outsideClose: (e: MouseEvent | TouchEvent) => void;
   open: boolean;
 }
 
-function MobileMenu({ open }: MenuProps): JSX.Element {
+function MobileMenu({ outsideClose, open }: MenuProps): JSX.Element {
+  const mobileToggleRef = useRef<HTMLDivElement>(null);
+
+  useOnClickOutside(mobileToggleRef, outsideClose);
+
   return (
-    <div className={open ? "nav__mobile_menu open" : "nav__mobile_menu"}>
+    <div
+      ref={mobileToggleRef}
+      className={open ? "nav__mobile_menu open" : "nav__mobile_menu"}>
       <ul className='nav__mobile_links'>
         <li className='nav__mobile_link'>
           <a href='/'>Collections</a>

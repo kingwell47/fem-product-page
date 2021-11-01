@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext, useRef } from "react";
 import { CartContext } from "../../context/CartContext";
 import Cart from "./Cart";
 import MobileMenu from "./MobileMenu";
@@ -8,17 +8,37 @@ import avatar from "../../images/image-avatar.png";
 function NavBar(): JSX.Element {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [cartOpen, setCartOpen] = useState<boolean>(false);
-
   const { cartItems } = useContext(CartContext);
+
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const cartButtonRef = useRef<HTMLButtonElement>(null);
+
+  const closeMenu = (event: MouseEvent | TouchEvent) => {
+    if (!mobileMenuOpen) return;
+    if (menuButtonRef.current?.contains(event.target as Node)) return;
+    setMobileMenuOpen(false);
+  };
+
+  const closeCart = (event: MouseEvent | TouchEvent) => {
+    if (!cartOpen) return;
+    if (cartButtonRef.current?.contains(event.target as Node)) return;
+    setCartOpen(false);
+  };
 
   const handleClick = (element: string): void => {
     switch (element) {
       case "mobile menu":
         setMobileMenuOpen(!mobileMenuOpen);
         document.body.classList.toggle("open");
+        document
+          .querySelector("#mobile-menu")
+          ?.setAttribute("aria-expanded", (!mobileMenuOpen).toString());
         return;
       case "cart":
         setCartOpen(!cartOpen);
+        document
+          .querySelector("#cart-toggle")
+          ?.setAttribute("aria-expanded", (!cartOpen).toString());
         return;
       default:
         return;
@@ -27,7 +47,10 @@ function NavBar(): JSX.Element {
 
   return (
     <nav className='nav'>
-      <MobileMenu open={mobileMenuOpen} />
+      <MobileMenu
+        outsideClose={(e: MouseEvent | TouchEvent): void => closeMenu(e)}
+        open={mobileMenuOpen}
+      />
       <div
         className={
           mobileMenuOpen
@@ -37,14 +60,16 @@ function NavBar(): JSX.Element {
       <div className='nav__left'>
         <button
           type='button'
+          ref={menuButtonRef}
           className={
             mobileMenuOpen
               ? "nav__toggle hide-for-desktop open"
               : "nav__toggle hide-for-desktop"
           }
           title='mobile menu'
+          id='mobile-menu'
           aria-label='open-menu'
-          aria-expanded={mobileMenuOpen}
+          aria-expanded='false'
           onClick={(): void => handleClick("mobile menu")}>
           <span></span>
           <span></span>
@@ -82,7 +107,15 @@ function NavBar(): JSX.Element {
         </ul>
       </div>
       <div className='nav__right'>
-        <button className='nav__cart' onClick={(): void => handleClick("cart")}>
+        <button
+          type='button'
+          ref={cartButtonRef}
+          className='nav__cart'
+          id='cart-toggle'
+          title='cart'
+          aria-label='open cart'
+          aria-expanded='false'
+          onClick={(): void => handleClick("cart")}>
           <svg width='22' height='20' xmlns='http://www.w3.org/2000/svg'>
             <path
               d='M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z'
@@ -98,7 +131,10 @@ function NavBar(): JSX.Element {
           <img src={avatar} alt='profile' />
         </a>
       </div>
-      <Cart open={cartOpen} />
+      <Cart
+        outsideClose={(e: MouseEvent | TouchEvent): void => closeCart(e)}
+        open={cartOpen}
+      />
     </nav>
   );
 }

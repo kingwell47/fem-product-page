@@ -107,6 +107,7 @@
     overflow: hidden;
     padding: 0;
     border: none;
+    z-index: 3;
 
     img {
       transition: opacity 350ms ease;
