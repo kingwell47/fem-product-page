@@ -115,7 +115,7 @@
 
     &:hover {
       img {
-        opacity: 25%;
+        opacity: 0.25;
       }
     }
 
@@ -129,7 +129,7 @@
       outline: fnc.rem(2) solid var(--color-primary-500);
 
       img {
-        opacity: 25%;
+        opacity: 0.25;
       }
     }
   }
