@@ -5,10 +5,9 @@ import CartItem from "./CartItem";
 
 interface CartProps {
   outsideClose: (e: MouseEvent | TouchEvent) => void;
-  open: boolean;
 }
 
-function Cart({ outsideClose, open }: CartProps): JSX.Element {
+function Cart({ outsideClose }: CartProps): JSX.Element {
   const { cartItems, setCartItems } = useContext(CartContext);
   const cartToggleRef = useRef<HTMLDivElement>(null);
 
@@ -20,7 +19,7 @@ function Cart({ outsideClose, open }: CartProps): JSX.Element {
   };
 
   return (
-    <div ref={cartToggleRef} className={open ? "cart open" : "cart"}>
+    <div ref={cartToggleRef} className='cart'>
       <div className='cart__header'>Cart</div>
       <hr />
       <div className='cart__bottom'>

@@ -1,5 +1,23 @@
 @use "../../functions" as fnc;
 
+@keyframes fade-in {
+  from {
+    visibility: hidden;
+    opacity: 0;
+    display: none;
+  }
+  1% {
+    visibility: visible;
+    opacity: 0;
+    display: flex;
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+    display: flex;
+  }
+}
+
 .lightbox {
   width: max(100vw, 100%);
   height: max(100vw, 100%);
@@ -11,6 +29,7 @@
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.75);
   padding-top: fnc.rem(80);
+  animation: fade-in 350ms ease forwards;
 
   @include fnc.breakpoint-down(small) {
     display: none;

@@ -51,12 +51,7 @@ function NavBar(): JSX.Element {
         outsideClose={(e: MouseEvent | TouchEvent): void => closeMenu(e)}
         open={mobileMenuOpen}
       />
-      <div
-        className={
-          mobileMenuOpen
-            ? "nav__overlay hide-for-desktop open"
-            : "nav__overlay hide-for-desktop"
-        }></div>
+      {mobileMenuOpen && <div className='nav__overlay hide-for-desktop' />}
       <div className='nav__left'>
         <button
           type='button'
@@ -131,10 +126,11 @@ function NavBar(): JSX.Element {
           <img src={avatar} alt='profile' />
         </a>
       </div>
-      <Cart
-        outsideClose={(e: MouseEvent | TouchEvent): void => closeCart(e)}
-        open={cartOpen}
-      />
+      {cartOpen && (
+        <Cart
+          outsideClose={(e: MouseEvent | TouchEvent): void => closeCart(e)}
+        />
+      )}
     </nav>
   );
 }
