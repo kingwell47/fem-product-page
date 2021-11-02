@@ -16,16 +16,15 @@ function Content({ itemData }: Props): JSX.Element {
 
   const reduceAmount = (): void => {
     if (amount <= 0) return;
-    setAmount(amount - 1);
+    setAmount((prev) => prev - 1);
   };
   const increaseAmount = (): void => {
     if (amount >= 99) return;
-    setAmount(amount + 1);
+    setAmount((prev) => prev + 1);
   };
 
   const handleAddItem = (): void => {
     if (!amount) return;
-    //TODO: check if item already in cart, update amount if needed
     let inCart: ItemContent[] | null = cartItems.filter(
       (item): boolean => item.itemName === itemName
     );
@@ -40,6 +39,7 @@ function Content({ itemData }: Props): JSX.Element {
       image,
     };
     setCartItems((prev: ItemContent[]) => [...prev, newItem]);
+    alert(`Added ${amount} items to cart!`); // Alerts are not cool
   };
 
   return (

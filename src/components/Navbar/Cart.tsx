@@ -18,6 +18,10 @@ function Cart({ outsideClose }: CartProps): JSX.Element {
     setCartItems(newItems);
   };
 
+  const handleCheckout = (): void => {
+    alert("This is where I would put my redirect...if I had one!");
+  };
+
   return (
     <div ref={cartToggleRef} className='cart'>
       <div className='cart__header'>Cart</div>
@@ -31,7 +35,10 @@ function Cart({ outsideClose }: CartProps): JSX.Element {
           ))
         )}
         {cartItems.length > 0 && (
-          <button type='button' className='cart__checkout'>
+          <button
+            type='button'
+            className='cart__checkout'
+            onClick={handleCheckout}>
             Checkout
           </button>
         )}
